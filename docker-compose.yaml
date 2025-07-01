@@ -1,0 +1,18 @@
+services:
+  kha-search:
+    image: eclipse-temurin:21-jre
+    container_name: ${APP_NAME}
+    ports:
+      - "${APP_PORT}:${CONTAINER_PORT}"
+    working_dir: ${WORK_DIR}
+    volumes:
+      - ./app:${WORK_DIR}
+    environment:
+      - APP_MODE=${APP_MODE}
+    command: ["java", "-cp", "libs/*:${APP_JAR}", "${MAIN_CLASS}"]
+    restart: unless-stopped
+    networks:
+      - shared_network
+networks:
+  shared_network:
+    external: true

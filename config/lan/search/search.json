@@ -1,0 +1,21 @@
+{
+  "server": {
+
+  },
+  "event_stream": {
+    "streamName": "event-stream",
+    "fieldName": "event_log",
+    "consumerGroup": "event-indexer",
+    "consumerName": "event-indexer-1",
+    "batchSize": 10,
+    "timeoutSeconds": 5
+  },
+  "opensearch": {
+    "host": "localhost",
+    "port": 9200,
+    "scheme": "http",
+    "username": "admin",
+    "password": "Hus@334nt",
+    "indexName": "events-log"
+  }
+}

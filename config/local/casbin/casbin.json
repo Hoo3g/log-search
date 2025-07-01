@@ -1,0 +1,19 @@
+{
+  "policySourceType": "resource",
+  "casbinModelFile": "casbin/model.conf",
+  "resources": ["config"],
+  "policySource": {
+    "resource": "casbin/policy.csv",
+    "database": "SELECT * FROM auth.policy_rules",
+    "api": "http://api.hocnhe.com/auth/v1/internal/policies"
+  },
+  "versionSourceType": "api",
+  "versionSource": {
+    "database": "SELECT version FROM auth.auth_version WHERE code = 'policy_version'",
+    "api": "http://api.hocnhe.com/auth/v1/internal/version/policy_version"
+  },
+  "polling": {
+    "enabled": true,
+    "interval": 300
+  }
+}
