@@ -1,0 +1,60 @@
+steps:
+  validate:
+    image: alpine
+    commands:
+      - echo $CI_WORKSPACE
+      - ls -la $CI_WORKSPACE
+      - echo "=== app.env content ==="
+      - cat app.env
+      - echo "=== loading environment variables ==="
+      - export $(cat app.env | grep -v '^#' | xargs)
+      - echo "APP_NAME:" $APP_NAME
+      - echo "APP_VERSION:" $APP_VERSION
+      - echo "APP_JAR:" $APP_JAR
+      - echo "BASE_DEPLOY_DIR:" $BASE_DEPLOY_DIR
+    when:
+      event:
+        - push
+        - pull_request
+      branch:
+        - main
+
+  build:
+    image: gradle:jdk21
+    environment:
+      CI: "true"
+      GRADLE_USER_HOME: /home/gradle/.gradle
+    volumes:
+      - /mount/java:/mount/java
+      - /mount/data/woodpecker/gradle-cache:/home/gradle/.gradle
+    commands:
+      - export $(cat app.env | grep -v '^#' | xargs)
+      - echo "Checking cache directory..."
+      - ls -la /home/gradle/.gradle || true
+      - chmod +x build.sh
+      - ./build.sh
+    when:
+      event:
+        - push
+        - pull_request
+      branch:
+        - main
+
+  deploy:
+    image: docker:26.1-cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mount/java:/mount/java
+    commands:
+      - apk add curl bash
+      - export $(cat app.env | grep -v '^#' | xargs)
+      - cd $BASE_DEPLOY_DIR/$APP_NAME
+      - docker compose --env-file .env down || true
+      - docker compose --env-file .env up -d
+      - docker compose --env-file .env ps
+    when:
+      event:
+        - push
+        - pull_request
+      branch:
+        - main

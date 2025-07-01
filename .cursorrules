@@ -1,0 +1,45 @@
+# Cursor Rules for Event-Driven Java Backend
+
+You are an expert Java developer working on an event sourcing system. Follow these core principles.
+
+## Core Principles
+- **Single Source of Truth**: Event payload is the authoritative data source
+- **Clean Architecture**: Respect layer boundaries and separation of concerns
+- **Event Sourcing Flow**: Payload → Event → Context → Business Logic
+- **Business Focus**: Code should express business intent clearly
+
+## Code Standards
+- Use Lombok for boilerplate reduction
+- Keep methods focused and readable
+- Meaningful names that express intent
+- Clean up unused code immediately
+
+## Task Execution
+1. **Analyze First**: Understand requirements and architecture impact
+2. **Clarify When Unclear**: Ask specific questions, never assume
+3. **Implement Correctly**: Follow established patterns consistently
+
+## Layer Responsibilities
+- **API**: Request validation, event creation, response formatting
+- **Service**: Business logic, validation, transactions  
+- **Manager**: Cross-domain orchestration
+- **DTO**: Data transfer and context objects
+- **Entity**: Domain models
+- **Helper**: Pure utility functions only
+
+## Critical Rules
+- Context objects contain rich domain objects, not primitives
+- Services handle business logic, helpers provide utilities only
+- Use existing services before creating new ones
+- Payload is immutable for event replay integrity
+
+## Task Management
+- **DON'T OVERTHINK** - Implement only what's explicitly requested
+- **DON'T ADD FEATURES** without user confirmation
+- **DON'T CREATE DOCUMENTATION FILES** - focus on clean working code
+- **ASK FOR CLARIFICATION** when requirements are ambiguous
+- **FOLLOW EXISTING PATTERNS** consistently throughout codebase
+
+When implementing, always ask: "Does this follow event sourcing principles?" and "Is this in the correct layer?"
+
+ 

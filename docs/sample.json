@@ -1,0 +1,62 @@
+{
+  "v": 8,
+  "id": "cmbrnat0v1vef13ph41wmulxl",
+  "name": "Sample",
+  "folders": [],
+  "requests": [
+    {
+      "v": "13",
+      "name": "Get Sample",
+      "method": "GET",
+      "endpoint": "<<BASE_URL>>/sample/v1/private/users",
+      "params": [
+        {
+          "key": "group",
+          "value": "1",
+          "active": true,
+          "description": "Group ID"
+        }
+      ],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "bearer",
+        "token": "<<ACCESS_TOKEN>>",
+        "authActive": true
+      },
+      "body": {
+        "contentType": null,
+        "body": null
+      },
+      "requestVariables": [],
+      "responses": {}
+    },
+    {
+      "v": "13",
+      "name": "POST Sample",
+      "method": "POST",
+      "endpoint": "<<BASE_URL>>/sample/v1/admin/users",
+      "params": [],
+      "headers": [],
+      "preRequestScript": "",
+      "testScript": "",
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "body": {
+        "contentType": "application/json",
+        "body": "{\n  \"username\":\"admin\",\n  \"password\":\"123456\"\n}"
+      },
+      "requestVariables": [],
+      "responses": {}
+    }
+  ],
+  "auth": {
+    "authType": "inherit",
+    "authActive": true
+  },
+  "headers": [],
+  "_ref_id": "coll_mbrni1wi_1207d38d-95eb-4afa-86b1-e61b9536b68b"
+}

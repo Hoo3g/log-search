@@ -1,0 +1,307 @@
+.App {
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  color: #1e293b;
+}
+
+h1, h2 {
+  color: #0f172a;
+}
+
+.filters-panel {
+  margin-bottom: 24px;
+}
+
+.filter-toggle-btn {
+  margin-bottom: 12px;
+  background-color: #3b82f6;
+  color: white;
+}
+
+.filter-group {
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.filter-section-title {
+  font-weight: bold;
+  color: #1e293b;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+
+.filter-collapse {
+  background: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #1e40af;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.filter-collapse:hover {
+  background: #e0e7ff;
+}
+
+.multi-select .css-13cymwt-control,
+.multi-select .css-1pahdxg-control {
+  min-height: 38px;
+  border-radius: 6px;
+  border-color: #cbd5e1;
+  font-size: 14px;
+  box-shadow: none;
+  background: white;
+}
+
+.multi-select .css-13cymwt-control:hover,
+.multi-select .css-1pahdxg-control:hover {
+  border-color: #3b82f6;
+}
+
+.multi-select .css-t3ipsp-control,
+.multi-select .css-t3ipsp-control:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.filter-input {
+  min-width: 180px;
+  width: 100%;
+}
+
+.regex-input {
+  font-family: monospace;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px dashed #cbd5e1;
+  background-color: #f8fafc;
+  width: 100%;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #3b82f6;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+input[type="text"],
+.react-datepicker-wrapper input,
+select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+.react-datepicker-wrapper input:focus,
+select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+label {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.chart-card {
+  flex: 1 1 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.log-table-section {
+  margin-top: 36px;
+}
+
+.log-table-section h2 {
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+thead {
+  background-color: #e2e8f0;
+}
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  background-color: #f1f5f9;
+  border-bottom: 2px solid #cbd5e1;
+  color: #0f172a;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+tbody tr:hover {
+  background-color: #dbeafe;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.modal {
+  position: relative;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  margin: auto;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.modal p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal pre {
+  background-color: #f1f5f9;
+  padding: 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  overflow-x: auto;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.modal .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.modal .close-btn:hover {
+  color: #1e293b;
+}
+
+table.log-table th,
+table.log-table td {
+  min-width: 100px; /* Đảm bảo cột không quá hẹp */
+  max-width: 300px; /* Giới hạn chiều rộng tối đa */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tùy chỉnh modal để hiển thị nhiều trường rõ ràng hơn */
+.modal p {
+  margin: 12px 0; /* Tăng khoảng cách giữa các trường */
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Tùy chỉnh pre để hiển thị data JSON đẹp hơn */
+.modal pre {
+  max-height: 300px; /* Giới hạn chiều cao để tránh tràn */
+  overflow-y: auto;
+}
