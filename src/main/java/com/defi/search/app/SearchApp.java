@@ -14,9 +14,11 @@ import com.defi.common.util.sql.HikariClient;
 import com.defi.common.vertx.VertxServer;
 import com.defi.config.ConfigSharedServices;
 import com.defi.config.vertx.ConfigVerticle;
+import com.defi.search.SearchSharedServices;
 import com.defi.search.config.SearchConfig;
 import com.defi.search.index.SearchIndexer;
 import com.defi.search.listener.EventRedisListener;
+import com.defi.search.vertx.SearchVerticle;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
@@ -57,15 +59,19 @@ public class SearchApp {
     }
 
     private void initServices() {
-        ConfigSharedServices.init();
+        //ConfigSharedServices.init();
+        SearchSharedServices.init();
         EventRedisListener.getInstance().start();
         SearchIndexer.getInstance().init();
+
     }
 
     private void startHttpServer() {
         String configFile = ModeManager.getInstance().getRealConfigFilePath("vertx/vertx.json");
         ObjectNode config = JsonUtil.toJsonObject(FileUtil.readString(configFile));
-        VertxServer.getInstance().start(config, ConfigVerticle.class);
+
+        VertxServer.getInstance().start(config, SearchVerticle.class);
+        // VertxServer.getInstance().start(config, ConfigVerticle.class);
     }
 
     private void startLoop() {

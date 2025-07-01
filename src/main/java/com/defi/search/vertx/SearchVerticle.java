@@ -1,5 +1,6 @@
 package com.defi.search.vertx;
 
+import com.defi.common.token.entity.Token;
 import com.defi.common.vertx.VertxConfig;
 import com.defi.common.vertx.handler.TokenAuthHandler;
 import com.defi.config.vertx.ConfigApi;
@@ -21,10 +22,14 @@ public class SearchVerticle  extends AbstractVerticle {
         crossAccessControl(router);
         router.route().handler(this::secureHandler);
         router.get("/search/v1/public/version").handler(this::version);
-        ConfigApi.configAPI(router);
+
+        //ConfigApi.configAPI(router);
+        SearchApi.configAPI(router);
         httpServer = vertx.createHttpServer()
                 .requestHandler(router)
                 .listen(VertxConfig.instance().httpPort).result();
+
+
     }
 
     @Override
@@ -33,7 +38,7 @@ public class SearchVerticle  extends AbstractVerticle {
             httpServer.close();
     }
 
-    public void crossAccessControl(Router router) {
+    public void crossAccessControl(Router router)  {
         router.route().handler(CorsHandler.create()
                 .addOrigin("*")
                 .allowedHeaders(Set.of("*"))
@@ -48,7 +53,7 @@ public class SearchVerticle  extends AbstractVerticle {
 
     private void secureHandler(RoutingContext rc) {
         String path = rc.normalizedPath();
-        if (!path.startsWith("search/v1/public/")) {
+        if (!path.startsWith("/search/v1/public/")) {
             TokenAuthHandler.handle(rc);
         } else {
             rc.next();
