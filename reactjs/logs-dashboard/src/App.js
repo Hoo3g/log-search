@@ -133,6 +133,36 @@ function App() {
     .map(([date, count]) => ({ date, count }))
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
+  const exportCSV = () => {
+      const rows = [['createdAt', 'id', 'targetType', 'targetId', 'subjectType', 'subjectId', 'type', 'action', 'correlationId']];
+      filteredLogs.forEach(log => {
+        rows.push([
+          new Date(Number(log.createdAt)).toLocaleString(),
+          log.id,
+          log.targetType,
+          log.targetId,
+          log.subjectType,
+          log.subjectId,
+          log.type,
+          log.data?.action,
+          log.correlationId
+        ]);
+      });
+      const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
+      const link = document.createElement("a");
+      link.href = csvContent;
+      link.download = "logs.csv";
+      link.click();
+    };
+
+    const exportJSON = () => {
+      const jsonContent = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(filteredLogs, null, 2));
+      const link = document.createElement("a");
+      link.href = jsonContent;
+      link.download = "logs.json";
+      link.click();
+    };
+
   return (
     <div className="App">
       <h1>📊 Logs Dashboard</h1>
@@ -213,6 +243,11 @@ function App() {
           <BarChartCard title="👤 Subject Type" data={subjectStats} dataKeyX="key" dataKeyY="doc_count" color="#8884d8" />
         </div>
       )}
+
+      <div style={{ marginTop: 20 }}>
+              <button onClick={exportCSV}>💾 Export CSV</button>
+              <button onClick={exportJSON} style={{ marginLeft: 8 }}>💾 Export JSON</button>
+      </div>
 
       <div className="log-table-section">
         <h2>📄 Danh sách Logs</h2>
