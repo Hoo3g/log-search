@@ -305,3 +305,23 @@ table.log-table td {
   max-height: 300px; /* Giới hạn chiều cao để tránh tràn */
   overflow-y: auto;
 }
+
+
+.small-modal {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px; /* Giới hạn chiều rộng */
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}

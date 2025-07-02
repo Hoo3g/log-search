@@ -280,7 +280,7 @@ function App() {
               <th>🆔 ID</th>
               <th>🎯 Target</th>
               <th>👤 Subject</th>
-              <th>⚡ Type</th>
+              <th>🌐 IP</th>
               <th>📝 Action</th>
               <th>🔗 Correlation ID</th>
             </tr>
@@ -292,7 +292,7 @@ function App() {
                 <td>{log.id}</td>
                 <td>{log.targetType}:{log.targetId}</td>
                 <td>{log.subjectType}:{log.subjectId}</td>
-                <td>{log.type || '-'}</td>
+                <td>{log.data?.ip || '-'}</td>
                 <td>{log.data?.action || '-'}</td>
                 <td>{log.correlationId}</td>
               </tr>
@@ -311,15 +311,22 @@ function App() {
       </div>
 
       {/* Modal */}
-      <Modal isOpen={!!selectedLog} onRequestClose={() => setSelectedLog(null)}>
+      <Modal
+        isOpen={!!selectedLog}
+        onRequestClose={() => setSelectedLog(null)}
+        contentLabel="Chi tiết Log"
+        className="small-modal"
+        overlayClassName="overlay"
+      >
         {selectedLog && (
           <div>
-            <button onClick={() => setSelectedLog(null)}>❌ Close</button>
+            <button className="close-btn" onClick={() => setSelectedLog(null)}>❌</button>
             <h2>📋 Chi tiết Log</h2>
             <pre>{JSON.stringify(selectedLog, null, 2)}</pre>
           </div>
         )}
       </Modal>
+
     </div>
   );
 }
