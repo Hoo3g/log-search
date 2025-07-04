@@ -81,7 +81,7 @@ public class SearchApp {
     }
 
     private void initLogic() throws Exception {
-        ModeManager.getInstance().init("lan");
+        ModeManager.getInstance().init("local");
         SearchConfig.getInstance().init("search/search.json");
         initLogBack();
         initHikariClient();
