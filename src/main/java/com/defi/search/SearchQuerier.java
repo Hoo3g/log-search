@@ -12,6 +12,7 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.opensearch.client.RestClient;
+import org.opensearch.client.json.JsonData;
 import org.opensearch.client.json.jackson.JacksonJsonpMapper;
 import org.opensearch.client.opensearch.OpenSearchAsyncClient;
 import org.opensearch.client.opensearch._types.FieldValue;
@@ -136,8 +137,8 @@ public class SearchQuerier {
         return executeSearch(Query.of(q -> q
                 .range(r -> r
                         .field("createdAt")
-                        .gte(JsonUtil.mapper.valueToTree(fromTime))
-                        .lte(JsonUtil.mapper.valueToTree(toTime))
+                        .gte(JsonData.of(fromTime))
+                        .lte(JsonData.of(toTime))
                 )
         ));
     }
