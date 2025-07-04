@@ -6,7 +6,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: SNTB@13nkt
+      POSTGRES_PASSWORD: Hus@334nt
       POSTGRES_DB: sample
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
@@ -19,7 +19,7 @@ services:
     container_name: local-redis
     ports:
       - "6379:6379"
-    command: ["redis-server", "--requirepass", "SNTB@13nkt"]
+    command: ["redis-server", "--requirepass", "Hus@334nt"]
     volumes:
       - ./data/redis:/data
     networks:
