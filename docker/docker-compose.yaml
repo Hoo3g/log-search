@@ -73,7 +73,7 @@ services:
       networks:
         - local-net
       depends_on:
-        - opensearch # Đảm bảo opensearch khởi động trước
+        - opensearch
       restart: unless-stopped
 
 
