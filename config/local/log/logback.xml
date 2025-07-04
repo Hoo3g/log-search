@@ -50,7 +50,8 @@
         </encoder>
     </appender>
     <appender name="EVENT_REDIS_STREAM" class="com.defi.common.util.log.appender.EventRedisAppender">
-
+        <streamName>event-stream</streamName>
+        <fieldName>event_log</fieldName>
     </appender>
 
     <!-- Separate Logger configurations -->
@@ -69,7 +70,6 @@
 
     <!-- EVENT Logger -->
     <logger name="event" level="INFO" additivity="false">
-        <appender-ref ref="EVENT_FILE" />
         <appender-ref ref="EVENT_REDIS_STREAM" />
     </logger>
 
