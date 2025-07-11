@@ -3,7 +3,7 @@ services:
     image: postgres:17
     container_name: local-postgres
     ports:
-      - "5432:5432"
+      - "1234:5432"
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: Hus@334nt
