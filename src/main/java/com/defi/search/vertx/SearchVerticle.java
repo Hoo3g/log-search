@@ -53,7 +53,7 @@ public class SearchVerticle  extends AbstractVerticle {
 
     private void secureHandler(RoutingContext rc) {
         String path = rc.normalizedPath();
-        if (!path.startsWith("/search/v1/public/")) {
+        if (!path.startsWith("/search/v1/public/") && !path.startsWith("/admin/api/search/")) {
             TokenAuthHandler.handle(rc);
         } else {
             rc.next();
